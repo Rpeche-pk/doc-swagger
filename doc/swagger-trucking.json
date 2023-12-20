@@ -24,7 +24,7 @@
             "description": "development server"
         },
         {
-            "url": "http://149.50.132.123:9896/api/v1/",
+            "url": "http://149.50.131.109:9896/api/v1/",
             "description": "dev server don web"
         }
     ],
@@ -189,6 +189,170 @@
                 }
             }
         },
+        "/employee/updateEmployee/{id}": {
+            "put": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "newEmployee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateEmployee"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employee/deactiveEmployee/{id}": {
+            "put": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "deactiveEmployee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/auth/changePassword": {
             "put": {
                 "tags": [
@@ -286,6 +450,142 @@
                 "responses": {
                     "201": {
                         "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicle/inactiveVehi/{id}": {
+            "post": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "inactiveVehicle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicle/activeVehi/{id}": {
+            "post": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "activeVehicle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -577,6 +877,295 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/AuthenticationResponseDto"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employee/newEmployee": {
+            "post": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "newEmployee_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DataNewEmployee"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employee/newDriver": {
+            "post": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "newEmployee_2",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewDriver"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employee/employee/{id}": {
+            "post": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "employeeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employee/activeEmployees": {
+            "post": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "activeEmployees",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -1214,6 +1803,266 @@
                 }
             }
         },
+        "/vehicle/getAllInactive": {
+            "get": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "getVehicleInactive",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/VehicleDto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicle/getAllActive": {
+            "get": {
+                "tags": [
+                    "vehicle-controller"
+                ],
+                "operationId": "getVehicleActive",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/VehicleDto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reg-mant/byVehicle/{id}": {
+            "get": {
+                "tags": [
+                    "registro mantenimiento"
+                ],
+                "operationId": "byVehicleId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/reg-mant/allRegisters": {
             "get": {
                 "tags": [
@@ -1417,6 +2266,255 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/AuthenticationResponseDto"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list/vehicle/getAllInactive": {
+            "get": {
+                "tags": [
+                    "vehicle-list-controller"
+                ],
+                "operationId": "getVehicleInactive_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/VehicleDto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list/vehicle/getAllActive": {
+            "get": {
+                "tags": [
+                    "vehicle-list-controller"
+                ],
+                "operationId": "getVehicleActive_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/VehicleDto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employee/allEmployees": {
+            "get": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "allEmployees",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -1695,10 +2793,107 @@
                     }
                 }
             }
+        },
+        "/employee/deleteEmployee/{id}": {
+            "delete": {
+                "tags": [
+                    "employee-controller"
+                ],
+                "operationId": "deleteEmployee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ProblemDetail"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ErrorResponseMessage"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
         "schemas": {
+            "ProblemDetail": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "detail": {
+                        "type": "string"
+                    },
+                    "instance": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "ErrorResponseMessage": {
                 "type": "object",
                 "properties": {
@@ -1792,35 +2987,6 @@
                     }
                 }
             },
-            "ProblemDetail": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "format": "uri"
-                    },
-                    "title": {
-                        "type": "string"
-                    },
-                    "status": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "detail": {
-                        "type": "string"
-                    },
-                    "instance": {
-                        "type": "string",
-                        "format": "uri"
-                    },
-                    "properties": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "object"
-                        }
-                    }
-                }
-            },
             "AuthenticationResponseDto": {
                 "type": "object",
                 "properties": {
@@ -1842,6 +3008,9 @@
                     "name": {
                         "type": "string"
                     },
+                    "lastName": {
+                        "type": "string"
+                    },
                     "email": {
                         "type": "string"
                     },
@@ -1855,6 +3024,9 @@
                         ]
                     },
                     "companyName": {
+                        "type": "string"
+                    },
+                    "photo": {
                         "type": "string"
                     }
                 }
@@ -1892,6 +3064,18 @@
                 "type": "object",
                 "properties": {
                     "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UpdateEmployee": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                        "type": "string"
+                    },
+                    "photo": {
                         "type": "string"
                     }
                 }
@@ -1949,7 +3133,7 @@
                         "type": "string"
                     },
                     "model": {
-                        "pattern": "^[a-zA-Z0-9]{3,15}$|^$",
+                        "pattern": "^[a-zA-Z0-9 ]{3,15}$|^$",
                         "type": "string"
                     },
                     "year": {
@@ -1958,6 +3142,9 @@
                     },
                     "patent": {
                         "pattern": "^[a-zA-Z0-9]{6,7}$|^$",
+                        "type": "string"
+                    },
+                    "reason": {
                         "type": "string"
                     },
                     "axle": {
@@ -2005,11 +3192,16 @@
                 "required": [
                     "category",
                     "expirationDate",
+                    "idVehicle",
                     "image",
                     "register"
                 ],
                 "type": "object",
                 "properties": {
+                    "idVehicle": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
                     "register": {
                         "maxLength": 6,
                         "minLength": 1,
@@ -2072,6 +3264,326 @@
                     },
                     "cost": {
                         "pattern": "^[0-9,.]{1,10}$",
+                        "type": "string"
+                    }
+                }
+            },
+            "DataNewEmployee": {
+                "required": [
+                    "email",
+                    "lastName",
+                    "name",
+                    "photo",
+                    "roleName"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "pattern": "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$|^$",
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "pattern": "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$|^$",
+                        "type": "string"
+                    },
+                    "email": {
+                        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                        "type": "string"
+                    },
+                    "roleName": {
+                        "type": "string",
+                        "enum": [
+                            "ADMIN",
+                            "OWNER",
+                            "DRIVER",
+                            "MAINTENANCE"
+                        ]
+                    },
+                    "photo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Company": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "vehicles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Vehicle"
+                        }
+                    }
+                }
+            },
+            "Fail": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "SERIOUS",
+                            "INTERMEDIATE",
+                            "MINOR"
+                        ]
+                    },
+                    "state": {
+                        "type": "string",
+                        "enum": [
+                            "PENDING",
+                            "IN_PROGRESS",
+                            "DONE"
+                        ]
+                    }
+                }
+            },
+            "Fuel": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            },
+            "NewDriver": {
+                "required": [
+                    "company",
+                    "criminalRecord",
+                    "driverLicencePhoto",
+                    "email",
+                    "lastName",
+                    "name",
+                    "password",
+                    "photo",
+                    "roleName"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "pattern": "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$|^$",
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "pattern": "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$|^$",
+                        "type": "string"
+                    },
+                    "email": {
+                        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                        "type": "string"
+                    },
+                    "password": {
+                        "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!#$%&()*+\\-/?@\\[\\]^_{\\\\|}])[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{\\\\|}]{8,12}$|^$",
+                        "type": "string"
+                    },
+                    "company": {
+                        "$ref": "#/components/schemas/Company"
+                    },
+                    "roleName": {
+                        "type": "string",
+                        "enum": [
+                            "ADMIN",
+                            "OWNER",
+                            "DRIVER",
+                            "MAINTENANCE"
+                        ]
+                    },
+                    "photo": {
+                        "type": "string"
+                    },
+                    "driverLicencePhoto": {
+                        "type": "string"
+                    },
+                    "criminalRecord": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RegMaint": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "km": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "manType": {
+                        "type": "string"
+                    },
+                    "bill": {
+                        "type": "string"
+                    },
+                    "cost": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            },
+            "Route": {
+                "type": "object",
+                "properties": {
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "lastModifiedDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "updatedBy": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "register": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "TCMG",
+                            "TCPG",
+                            "TCF",
+                            "TCP",
+                            "TTE",
+                            "TCI"
+                        ]
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "deleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Vehicle": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "brand": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "year": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "patent": {
+                        "type": "string"
+                    },
+                    "axle": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "reason": {
+                        "type": "string"
+                    },
+                    "dateVtv": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "vehicleType": {
+                        "$ref": "#/components/schemas/VehicleType"
+                    },
+                    "fuel": {
+                        "$ref": "#/components/schemas/Fuel"
+                    },
+                    "brandMotor": {
+                        "type": "string"
+                    },
+                    "numberMotor": {
+                        "type": "string"
+                    },
+                    "brandChassis": {
+                        "type": "string"
+                    },
+                    "numberChassis": {
+                        "type": "string"
+                    },
+                    "maintenance": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RegMaint"
+                        }
+                    },
+                    "fails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Fail"
+                        }
+                    },
+                    "company": {
+                        "$ref": "#/components/schemas/Company"
+                    },
+                    "route": {
+                        "$ref": "#/components/schemas/Route"
+                    },
+                    "available": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "VehicleType": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "description": {
                         "type": "string"
                     }
                 }
@@ -2176,12 +3688,6 @@
                         "type": "integer",
                         "format": "int64"
                     },
-                    "first": {
-                        "type": "boolean"
-                    },
-                    "last": {
-                        "type": "boolean"
-                    },
                     "size": {
                         "type": "integer",
                         "format": "int32"
@@ -2205,6 +3711,12 @@
                     },
                     "pageable": {
                         "$ref": "#/components/schemas/PageableObject"
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
                     },
                     "empty": {
                         "type": "boolean"
